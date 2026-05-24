@@ -9,6 +9,9 @@ import {
   PiLightning,
   PiSwap,
 } from "react-icons/pi";
+import appleLogo from "../assets/apple.svg";
+import pinterestLogo from "../assets/pinterest.svg";
+import warnerBrosLogo from "../assets/warner-bros.svg";
 import type {
   NavItem,
   PaymentCardItem,
@@ -60,7 +63,7 @@ export const transferItems: TransferItem[] = [
     digits: "4012",
     date: "28 Oct. 21",
     amount: "- $ 550",
-    logo: "https://assets.codepen.io/285131/apple.svg",
+    logo: appleLogo,
   },
   {
     company: "Pinterest",
@@ -68,7 +71,7 @@ export const transferItems: TransferItem[] = [
     digits: "5214",
     date: "26 Oct. 21",
     amount: "- $ 120",
-    logo: "https://assets.codepen.io/285131/pinterest.svg",
+    logo: pinterestLogo,
   },
   {
     company: "Warner Bros.",
@@ -76,7 +79,7 @@ export const transferItems: TransferItem[] = [
     digits: "2228",
     date: "22 Oct. 21",
     amount: "- $ 70",
-    logo: "https://assets.codepen.io/285131/warner-bros.svg",
+    logo: warnerBrosLogo,
   },
 ];
 

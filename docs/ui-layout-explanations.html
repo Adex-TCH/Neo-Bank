@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank Dashboard UI Notes</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: #1f1f1f;
+        background: #f5f6f8;
+        line-height: 1.65;
+      }
+
+      main {
+        width: min(960px, 100%);
+        margin: 0 auto;
+        padding: 48px 40px 64px;
+        background: #ffffff;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0 0 0.75rem;
+        line-height: 1.2;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        margin-top: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #d9dde3;
+        font-size: 1.35rem;
+      }
+
+      h3 {
+        margin-top: 1.25rem;
+        font-size: 1.05rem;
+      }
+
+      p {
+        margin: 0.5rem 0 0.9rem;
+      }
+
+      ul {
+        margin: 0.4rem 0 1rem 1.2rem;
+        padding: 0;
+      }
+
+      li {
+        margin: 0.3rem 0;
+      }
+
+      code {
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 0.95em;
+        background: #f2f4f7;
+        padding: 0.08rem 0.35rem;
+        border-radius: 4px;
+      }
+
+      pre {
+        margin: 0.9rem 0 1.2rem;
+        padding: 14px 16px;
+        background: #f2f4f7;
+        border-left: 4px solid #2f6fed;
+        overflow-x: auto;
+      }
+
+      .intro {
+        color: #525866;
+        font-size: 1.02rem;
+      }
+
+      .note {
+        padding: 14px 16px;
+        background: #eef6ff;
+        border-left: 4px solid #3b82f6;
+        margin: 1rem 0 1.25rem;
+      }
+
+      .path {
+        color: #2f6fed;
+        font-weight: 600;
+      }
+
+      @media print {
+        body {
+          background: #ffffff;
+        }
+
+        main {
+          width: 100%;
+          margin: 0;
+          padding: 20px 18px 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Bank Dashboard UI Notes</h1>
+      <p class="intro">
+        This guide explains two things in the project: what code creates the
+        hovers, animations, and divider lines, and what code controls the whole
+        layout plus the alignment of cards, sections, icons, and images.
+      </p>
+
+      <div class="note">
+        Main files involved:
+        <span class="path">src/styles/global.css</span>,
+        <span class="path">src/components/Navbar/Navbar.css</span>,
+        <span class="path">src/components/Cards/Cards.css</span>,
+        <span class="path">src/components/Charts/Charts.css</span>,
+        <span class="path">src/layouts/MainLayout.tsx</span>, and
+        <span class="path">src/pages/Dashboard.tsx</span>.
+      </div>
+
+      <h2>1. Hovers, Animations, and Divider Lines</h2>
+
+      <h3>Icon hover animation</h3>
+      <p>
+        The shared icon behavior comes from
+        <code>.icon-button</code> in
+        <span class="path">src/styles/global.css</span>. The smooth effect
+        happens because of <code>transition: 0.25s ease;</code>. On
+        <code>:hover</code> and <code>:focus</code>, the background changes and
+        a ring is added with <code>box-shadow</code>.
+      </p>
+      <pre><code>.icon-button {
+  transition: 0.25s ease;
+}
+
+.icon-button:hover,
+.icon-button:focus {
+  background-color: #313131;
+  box-shadow: 0 0 0 4px #1f1f1f, 0 0 0 5px #969593;
+}</code></pre>
+
+      <h3>Button hover animation</h3>
+      <p>
+        The same pattern is used for regular buttons like
+        <code>.flat-button</code>, <code>.save-button</code>, and
+        <code>.settings-button</code>. The animation is not coming from React;
+        it is CSS changing color and background smoothly over time.
+      </p>
+
+      <h3>Navbar tab line effect</h3>
+      <p>
+        In <span class="path">src/components/Navbar/Navbar.css</span>, each tab
+        link starts with <code>border-top: 2px solid transparent</code>. When
+        the tab becomes active, hovered, or focused, the border color changes to
+        white. That creates the top line effect.
+      </p>
+      <pre><code>.tabs a {
+  border-top: 2px solid transparent;
+  transition: 0.25s ease;
+}
+
+.tabs a.active,
+.tabs a:hover,
+.tabs a:focus {
+  color: #ffffff;
+  border-color: #ffffff;
+}</code></pre>
+
+      <h3>Profile image ring</h3>
+      <p>
+        The avatar ring on hover is also from CSS. On
+        <code>.user-profile:hover span:last-child</code>, a
+        <code>box-shadow</code> is applied around the circular image wrapper.
+      </p>
+
+      <h3>Card lift animation</h3>
+      <p>
+        The service cards use a small hover lift in
+        <span class="path">src/components/Cards/Cards.css</span>. The movement
+        is created with <code>transform: translateY(-5px)</code>, while
+        <code>transition</code> makes the move feel smooth.
+      </p>
+      <pre><code>.tile {
+  transition: 0.25s ease;
+}
+
+.tile:hover {
+  transform: translateY(-5px);
+}</code></pre>
+
+      <h3>Divider lines</h3>
+      <p>
+        The lines you see between areas are mostly plain borders, for example:
+      </p>
+      <ul>
+        <li><code>border-bottom</code> under the logo and nav tabs</li>
+        <li><code>border-left</code> between action groups</li>
+        <li><code>border-top</code> and <code>border-bottom</code> in payment rows</li>
+      </ul>
+      <p>
+        So the short version is:
+      </p>
+      <ul>
+        <li><code>transition</code> gives smooth change</li>
+        <li><code>:hover</code> and <code>:focus</code> define the interaction state</li>
+        <li><code>transform</code> creates movement</li>
+        <li><code>box-shadow</code> creates rings or glow</li>
+        <li><code>border-top</code>, <code>border-bottom</code>, and <code>border-left</code> create lines</li>
+      </ul>
+
+      <h2>2. Whole Layout and Alignment</h2>
+
+      <h3>The page skeleton</h3>
+      <p>
+        The structure starts in
+        <span class="path">src/layouts/MainLayout.tsx</span>. It creates the
+        outer wrapper <code>.app</code>, then places the navbar above the main
+        body, and inside the main body it places the sidebar and the content
+        area.
+      </p>
+      <pre><code>&lt;div className="app"&gt;
+  &lt;Navbar /&gt;
+  &lt;div className="app-body"&gt;
+    &lt;Sidebar /&gt;
+    &lt;main className="app-body-main-content"&gt;...&lt;/main&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+      <p>
+        The alignment of those blocks is then handled in
+        <span class="path">src/styles/global.css</span> by CSS Grid:
+      </p>
+      <pre><code>.app-body {
+  display: grid;
+  grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+}</code></pre>
+
+      <p>
+        This means the sidebar gets the first column, the main area gets the
+        second column, and the gap controls the space between them.
+      </p>
+
+      <h3>The dashboard split</h3>
+      <p>
+        In <span class="path">src/pages/Dashboard.tsx</span>, the dashboard is
+        split into two columns:
+      </p>
+      <ul>
+        <li><code>.dashboard-main-column</code> for service and transfer sections</li>
+        <li><code>.dashboard-sidebar-column</code> for the payment panel</li>
+      </ul>
+      <p>
+        That arrangement is also controlled by Grid in
+        <span class="path">src/styles/global.css</span>:
+      </p>
+      <pre><code>.dashboard-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr);
+  gap: clamp(24px, 4vw, 56px);
+}</code></pre>
+
+      <p>
+        The left side is intentionally wider, while the right side stays
+        narrower for the payment section.
+      </p>
+
+      <h3>How section headers align</h3>
+      <p>
+        Inside most sections, alignment is handled with Flexbox. For example:
+      </p>
+      <ul>
+        <li><code>.service-section-header</code> aligns search, dropdown, and button</li>
+        <li><code>.transfer-section-header</code> aligns the title and filter area</li>
+        <li><code>.payment-section-header</code> aligns text and card buttons</li>
+      </ul>
+      <p>
+        The common pattern is:
+      </p>
+      <pre><code>display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 1rem;</code></pre>
+      <p>
+        <code>align-items: center</code> handles vertical alignment,
+        <code>justify-content: space-between</code> pushes groups apart, and
+        <code>gap</code> sets spacing.
+      </p>
+
+      <h3>How the service cards line up</h3>
+      <p>
+        In <span class="path">src/components/Cards/BalanceCard.tsx</span>, the
+        cards are rendered inside <code>.tiles</code>. The actual alignment is
+        done by CSS Grid:
+      </p>
+      <pre><code>.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}</code></pre>
+      <p>
+        This makes the cards auto-wrap and stay evenly spaced. Each card itself
+        is also a flex column, which is why the title sits near the top and the
+        action link stays near the bottom.
+      </p>
+
+      <h3>How transfer rows line up</h3>
+      <p>
+        In <span class="path">src/components/Cards/TransactionCard.tsx</span>,
+        each transfer row is made of three main pieces:
+      </p>
+      <ul>
+        <li>logo</li>
+        <li>details</li>
+        <li>amount</li>
+      </ul>
+      <p>
+        The outer row uses Flexbox, while the details area uses Grid:
+      </p>
+      <pre><code>.transfer {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.transfer-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}</code></pre>
+      <p>
+        So Flexbox aligns the major blocks, and Grid splits the information
+        into equal inner columns.
+      </p>
+
+      <h3>How payment cards line up</h3>
+      <p>
+        In <span class="path">src/components/Charts/ExpenseChart.tsx</span>,
+        each payment row has a small card plus a details block. The row uses
+        Flexbox, and the inner details row also uses Flexbox to separate the
+        amount from the arrow button.
+      </p>
+
+      <h3>How images are aligned</h3>
+      <p>
+        Images are controlled in two main ways:
+      </p>
+      <ul>
+        <li>
+          Global image rules like <code>display: block</code> and
+          <code>max-width: 100%</code> prevent strange spacing and overflow
+        </li>
+        <li>
+          Specific image rules such as
+          <code>object-fit: cover</code> and
+          <code>object-position: center top</code> keep the profile image neatly
+          cropped inside its circular frame
+        </li>
+      </ul>
+
+      <h3>How responsiveness happens</h3>
+      <p>
+        The layout changes for smaller screens through <code>@media</code>
+        queries. Those rules switch multi-column grids to single-column layouts,
+        allow rows to wrap, reduce gaps, and make stacked mobile versions of
+        cards and forms.
+      </p>
+
+      <div class="note">
+        Quick summary:
+        <ul>
+          <li><code>grid</code> controls the big page structure</li>
+          <li><code>flex</code> controls alignment inside sections</li>
+          <li><code>gap</code>, <code>margin</code>, and <code>padding</code> control spacing</li>
+          <li><code>object-fit</code> and width rules control image placement</li>
+          <li><code>@media</code> queries handle smaller screens</li>
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>

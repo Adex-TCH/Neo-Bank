@@ -5,11 +5,12 @@
 .payment-section-header {
   display: flex;
   align-items: center;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
 .payment-section-header p {
-  color: var(--c-text-tertiary);
+  color: #969593;
   font-size: 0.875rem;
 }
 
@@ -18,6 +19,7 @@
   margin-left: auto;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .payment-section-header div > * + * {
@@ -34,8 +36,8 @@
   background-color: transparent;
   transition: 0.25s ease;
   border-radius: 4px;
-  border: 2px solid var(--c-gray-600);
-  color: var(--c-text-primary);
+  border: 2px solid #313131;
+  color: #ffffff;
   cursor: pointer;
 }
 
@@ -46,9 +48,9 @@
 .card-button:focus,
 .card-button:hover,
 .card-button.active {
-  color: var(--c-gray-800);
-  background-color: var(--c-white);
-  border-color: var(--c-white);
+  color: #1f1f1f;
+  background-color: #ffffff;
+  border-color: #ffffff;
 }
 
 .payments {
@@ -60,6 +62,7 @@
 .payment {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 
 .payment + * {
@@ -72,7 +75,7 @@
   aspect-ratio: 3 / 2;
   flex-shrink: 0;
   border-radius: 6px;
-  color: var(--c-gray-800);
+  color: #1f1f1f;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -81,15 +84,15 @@
 }
 
 .card.green {
-  background-color: var(--c-green-500);
+  background-color: #45ffbc;
 }
 
 .card.olive {
-  background-color: var(--c-olive-500);
+  background-color: #e3ffa8;
 }
 
 .card.gray {
-  background-color: var(--c-gray-300);
+  background-color: #bdbbb7;
 }
 
 .card span:last-child {
@@ -100,20 +103,19 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  margin-left: 1.5rem;
 }
 
 .payment-details h3 {
   font-size: 1rem;
-  color: var(--c-text-tertiary);
+  color: #969593;
 }
 
 .payment-details div {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  border-top: 1px solid var(--c-gray-600);
-  border-bottom: 1px solid var(--c-gray-600);
+  border-top: 1px solid #313131;
+  border-bottom: 1px solid #313131;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -131,7 +133,7 @@
 }
 
 .faq p {
-  color: var(--c-text-tertiary);
+  color: #969593;
   font-size: 0.875rem;
 }
 
@@ -139,8 +141,8 @@
   margin-top: 0.75rem;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  border-top: 1px solid var(--c-gray-600);
-  border-bottom: 1px solid var(--c-gray-600);
+  border-top: 1px solid #313131;
+  border-bottom: 1px solid #313131;
   font-size: 0.875rem;
   display: flex;
   align-items: center;
@@ -149,7 +151,7 @@
 .faq div label {
   padding-right: 1rem;
   margin-right: 1rem;
-  border-right: 1px solid var(--c-gray-600);
+  border-right: 1px solid #313131;
 }
 
 .faq div input {
@@ -163,12 +165,14 @@
 .payment-section-footer {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   margin-top: 1.5rem;
 }
 
 .save-button {
   border: 1px solid currentColor;
-  color: var(--c-text-tertiary);
+  color: #969593;
   border-radius: 6px;
   padding: 0.75em 2.5em;
   background-color: transparent;
@@ -178,17 +182,16 @@
 
 .save-button:focus,
 .save-button:hover {
-  color: var(--c-white);
+  color: #ffffff;
 }
 
 .settings-button {
   display: flex;
   align-items: center;
-  color: var(--c-text-tertiary);
+  color: #969593;
   background-color: transparent;
   border: 0;
   padding: 0;
-  margin-left: 1.5rem;
   cursor: pointer;
   transition: 0.25s ease;
 }
@@ -199,5 +202,68 @@
 
 .settings-button:focus,
 .settings-button:hover {
-  color: var(--c-white);
+  color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .payment-section-header {
+    flex-wrap: wrap;
+  }
+
+  .payment-section-header div {
+    width: 100%;
+    padding-left: 0;
+    margin-left: 0;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .payment-section > h2 {
+    font-size: 1.25rem;
+  }
+
+  .payment {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card {
+    width: min(180px, 100%);
+  }
+
+  .payment-details {
+    margin-left: 0;
+  }
+
+  .payment-details div {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .payment-details div span {
+    font-size: 1.25rem;
+  }
+
+  .faq div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .faq div label {
+    padding-right: 0;
+    margin-right: 0;
+    border-right: 0;
+  }
+
+  .payment-section-footer {
+    align-items: stretch;
+  }
+
+  .save-button,
+  .settings-button {
+    width: 100%;
+    justify-content: center;
+  }
 }

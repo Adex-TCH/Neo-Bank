@@ -1,23 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-:root {
-  --c-gray-900: #000000;
-  --c-gray-800: #1f1f1f;
-  --c-gray-700: #2e2e2e;
-  --c-gray-600: #313131;
-  --c-gray-500: #969593;
-  --c-gray-400: #a6a6a6;
-  --c-gray-300: #bdbbb7;
-  --c-gray-200: #f1f1f1;
-  --c-gray-100: #ffffff;
-  --c-green-500: #45ffbc;
-  --c-olive-500: #e3ffa8;
-  --c-white: var(--c-gray-100);
-  --c-text-primary: var(--c-gray-100);
-  --c-text-secondary: var(--c-gray-200);
-  --c-text-tertiary: var(--c-gray-500);
-}
-
 *,
 *::before,
 *::after {
@@ -35,18 +17,15 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: "Be Vietnam Pro", sans-serif;
-  background-color: var(--c-gray-900);
-  color: var(--c-text-primary);
-  display: flex;
-  justify-content: center;
-  padding-top: 3vw;
-  padding-bottom: 3vw;
+  background-color: #000000;
+  color: #ffffff;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 #root {
   width: 100%;
-  display: flex;
-  justify-content: center;
+  min-height: 100vh;
 }
 
 img {
@@ -66,11 +45,10 @@ a {
 }
 
 .app {
-  min-height: 80vh;
-  width: 95%;
-  max-width: 1600px;
-  background-color: var(--c-gray-800);
-  padding: 2vw 4vw 6vw;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #1f1f1f;
+  padding: clamp(20px, 3vw, 40px);
   display: flex;
   flex-direction: column;
 }
@@ -78,9 +56,9 @@ a {
 .app-body {
   height: 100%;
   display: grid;
-  grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr);
-  column-gap: 4rem;
-  padding-top: 2.5rem;
+  grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  padding-top: clamp(24px, 4vw, 40px);
 }
 
 @media (max-width: 1200px) {
@@ -89,7 +67,7 @@ a {
   }
 
   .app-body > * {
-    margin-bottom: 3.5rem;
+    margin-bottom: 0;
   }
 }
 
@@ -99,8 +77,8 @@ a {
 
 .dashboard-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 400px);
-  column-gap: 4rem;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr);
+  gap: clamp(24px, 4vw, 56px);
 }
 
 @media (max-width: 1200px) {
@@ -109,7 +87,7 @@ a {
   }
 
   .dashboard-layout > * + * {
-    margin-top: 3.5rem;
+    margin-top: 0;
   }
 }
 
@@ -126,8 +104,8 @@ a {
   height: 32px;
   border-radius: 50%;
   background-color: transparent;
-  border: 1px solid var(--c-gray-500);
-  color: var(--c-text-primary);
+  border: 1px solid #969593;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,23 +126,23 @@ a {
 
 .icon-button:hover,
 .icon-button:focus {
-  background-color: var(--c-gray-600);
-  box-shadow: 0 0 0 4px var(--c-gray-800), 0 0 0 5px var(--c-text-tertiary);
+  background-color: #313131;
+  box-shadow: 0 0 0 4px #1f1f1f, 0 0 0 5px #969593;
 }
 
 .flat-button {
   border-radius: 6px;
-  background-color: var(--c-gray-700);
+  background-color: #2e2e2e;
   padding: 0.5em 1.5em;
   border: 0;
-  color: var(--c-text-secondary);
+  color: #f1f1f1;
   transition: 0.25s ease;
   cursor: pointer;
 }
 
 .flat-button:hover,
 .flat-button:focus {
-  background-color: var(--c-gray-600);
+  background-color: #313131;
 }
 
 input:focus,
@@ -173,5 +151,21 @@ a:focus,
 textarea:focus,
 button:focus {
   outline: 0;
-  box-shadow: 0 0 0 2px var(--c-gray-800), 0 0 0 4px var(--c-gray-300);
+  box-shadow: 0 0 0 2px #1f1f1f, 0 0 0 4px #bdbbb7;
+}
+
+@media (max-width: 768px) {
+  .app {
+    min-height: 100vh;
+    padding: 18px 16px 28px;
+  }
+
+  .app-body {
+    gap: 28px;
+    padding-top: 20px;
+  }
+
+  .dashboard-layout {
+    gap: 28px;
+  }
 }

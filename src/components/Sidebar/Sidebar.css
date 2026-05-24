@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  color: var(--c-text-tertiary);
+  color: #969593;
 }
 
 .navigation a {
@@ -41,7 +41,7 @@
 .navigation a:hover,
 .navigation a:focus {
   transform: translateX(4px);
-  color: var(--c-text-primary);
+  color: #ffffff;
 }
 
 .footer {
@@ -61,9 +61,9 @@
 }
 
 .footer div {
-  border-top: 1px solid var(--c-gray-600);
+  border-top: 1px solid #313131;
   margin-top: 1.5rem;
   padding-top: 1rem;
   font-size: 0.75rem;
-  color: var(--c-text-tertiary);
+  color: #969593;
 }

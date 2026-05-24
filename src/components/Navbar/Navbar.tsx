@@ -1,5 +1,7 @@
 import { tabs } from "../../data/mockData";
 import { PiBell, PiList, PiMagnifyingGlass } from "react-icons/pi";
+import almeriaLogo from "../../assets/almeria-logo.svg";
+import profilePhoto from "../../assets/profile-photo.jpg";
 import "./Navbar.css";
 
 function Navbar() {
@@ -8,10 +10,7 @@ function Navbar() {
       <div className="app-header-logo">
         <div className="logo">
           <span className="logo-icon">
-            <img
-              src="https://assets.codepen.io/285131/almeria-logo.svg"
-              alt="Almeria logo"
-            />
+            <img src={almeriaLogo} alt="Almeria logo" />
           </span>
           <h1 className="logo-title">
             <span>Almeria</span>
@@ -36,11 +35,12 @@ function Navbar() {
 
       <div className="app-header-actions">
         <button className="user-profile" type="button">
-          <span>Matheo Peterson</span>
+          <span>Adesina Emmanuel</span>
           <span>
             <img
-              src="https://assets.codepen.io/285131/almeria-avatar.jpeg"
-              alt="Matheo Peterson"
+              src={profilePhoto}
+              alt="Adesina Emmanuel"
+              className="user-profile-image"
             />
           </span>
         </button>
