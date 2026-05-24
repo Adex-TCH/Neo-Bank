@@ -63,9 +63,3 @@ src/
 - `BalanceCard` renders the service tiles section.
 - `TransactionCard` renders the latest transfers section.
 - `ExpenseChart` renders the payment panel on the right side.
-
-## Extra Documentation
-
-For a full file-by-file explanation of everything inside `src`, see:
-
-[SRC_FILE_GUIDE.md](</c:/Users/Adex/OneDrive/Desktop/Bank Dashboard/SRC_FILE_GUIDE.md>)
